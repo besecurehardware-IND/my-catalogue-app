@@ -1,1 +1,4 @@
-
+[
+  {"id": "1", "name": "Brass Handle H-201", "mrp": "500", "rate": "350"},
+  {"id": "2", "name": "MOP Handle M-05", "mrp": "1200", "rate": "800"}
+]
