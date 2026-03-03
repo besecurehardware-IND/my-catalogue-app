@@ -1,30 +1,30 @@
 import pandas as pd
 import json
+import os
 
-def update_admin_panel():
-    try:
-        # 1. Excel read karna
-        # Is line ko replace karein
-        df = pd.read_excel('catalog.xlsx', engine='openpyxl')
-        
-        # 2. GitHub Raw link setup (Aapki repository ke hisab se)
-        base_url = "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/"
-        
-        # 3. Image URL banana
-        df['imageUrl'] = base_url + df['image_name'].astype(str)
-        
-        # 4. Filter: Sirf wahi dikhao jo 'Available' hain
-        available_df = df[df['status'] == 'Available']
-        
-        # 5. JSON tyar karna
-        final_data = available_df[['id', 'name', 'mrp', 'rate', 'imageUrl']].to_dict(orient='records')
-        
-        with open('data.json', 'w') as f:
-            json.dump(final_data, f, indent=4)
-            
-        print("✅ Data tyar hai! Photos aur Stock update ho gaye.")
-    except Exception as e:
-        print(f"❌ Error: {e}")
+def process():
+    df = pd.read_excel('catalog.xlsx')
+    # Sirf 'Available' items dikhane ke liye
+    df = df[df['status'] == 'Available']
+    
+    products = []
+    for _, row in df.iterrows():
+        products.append({
+            "id": str(row['id']),
+            "name": str(row['name']),
+            "mrp": str(row['mrp']),
+            "rate": str(row['rate']),
+            "material": str(row.get('material', '')),
+            "size": str(row.get('size', '')),
+            "finish": str(row.get('finish', '')),
+            "unit": str(row.get('unit', '')),
+            "description": str(row.get('description', '')),
+            "imageUrl": f"https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/{row['image_name']}",
+            "status": str(row['status'])
+        })
+    
+    with open('data.json', 'width') as f:
+        json.dump(products, f, indent=4)
 
 if __name__ == "__main__":
-    update_admin_panel()
+    process()
