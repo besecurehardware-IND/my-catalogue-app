@@ -7,11 +7,25 @@
         "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/H001"
     },
     {
+        "id": "H002",
+        "name": "Luxury Rose Gold Pull",
+        "mrp": 6000,
+        "rate": 2800,
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/H002"
+    },
+    {
         "id": "M010",
         "name": "MOP Inlay Handle",
         "mrp": 6000,
         "rate": 5500,
         "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/M010"
+    },
+    {
+        "id": "P005",
+        "name": "Pooja Mandir Knob",
+        "mrp": 500,
+        "rate": 450,
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/P005"
     },
     {
         "id": "G009",
