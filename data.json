@@ -89,5 +89,12 @@
         "mrp": 10000,
         "rate": 9999,
         "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/Gemini_Generated_Image_vhr0y2vhr0y2vhr0.png"
+    },
+    {
+        "id": "MANDLA ",
+        "name": "LOTUSSS",
+        "mrp": 300000,
+        "rate": 200000,
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/ChatGPT Image Feb 15, 2026, 01_07_28 PM.png"
     }
 ]
