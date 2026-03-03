@@ -1,45 +1,6 @@
 [
     {
         "id": "PULL HANDLE 001",
-        "name": "JAYA HANDLE ",
-        "mrp": "30000",
-        "rate": "25000",
-        "material": "BRASS",
-        "size": "24\"",
-        "finish": "ANTQ",
-        "unit": "Per Set",
-        "description": "HII",
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/ChatGPT Image Feb 8, 2026, 10_25_51 PM.png",
-        "last_updated": "2026-03-03 19:18:30"
-    },
-    {
-        "id": "DOOR HANDLE",
-        "name": "LOTUSSS",
-        "mrp": "10000",
-        "rate": "25000",
-        "material": "BRASS",
-        "size": "34\"",
-        "finish": "ANTQ",
-        "unit": "Per Set",
-        "description": "GOOD",
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/Gemini_Generated_Image_524m5r524m5r524m.png",
-        "last_updated": "2026-03-03 19:18:30"
-    },
-    {
-        "id": "MANDLA ",
-        "name": "KISHORE ",
-        "mrp": "10000",
-        "rate": "9999",
-        "material": "S.S.",
-        "size": "249\"",
-        "finish": "BLACK",
-        "unit": "Per Set",
-        "description": "THIS IS TO GOOD TO HANDLE AND ALSO ",
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/ChatGPT Image Feb 15, 2026, 01_32_57 PM.png,ChatGPT Image Feb 15, 2026, 01_31_37 PM.png,ChatGPT Image Feb 15, 2026, 01_28_47 PM.png,Gemini_Generated_Image_1sb8oe1sb8oe1sb8.png,Gemini_Generated_Image_iu3mkpiu3mkpiu3m.png",
-        "last_updated": "2026-03-03 19:18:30"
-    },
-    {
-        "id": "PULL HANDLE 001",
         "name": "D",
         "mrp": "10000",
         "rate": "9999",
@@ -49,6 +10,6 @@
         "unit": "Per Pcs",
         "description": "QWQQWQWQWQWQWQ",
         "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/ChatGPT Image Feb 15, 2026, 01_28_47 PM.png,ChatGPT Image Feb 15, 2026, 01_32_57 PM.png,ChatGPT Image Feb 15, 2026, 01_31_37 PM.png",
-        "last_updated": "2026-03-03 19:18:30"
+        "last_updated": "2026-03-03 19:22:55"
     }
 ]
