@@ -4,34 +4,34 @@
         "name": "LOTUS DOOR HANDLE",
         "mrp": 80000,
         "rate": 50000,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/H001.PNG"
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/H001.JPG"
     },
     {
         "id": "H002",
         "name": "SHINE DOOR HANDLE ",
         "mrp": 8000,
         "rate": 2800,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/H002.PNG"
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/H002.JPG"
     },
     {
         "id": "M010",
         "name": "PUSHPA DOOR HANDLE ",
         "mrp": 6000,
         "rate": 5500,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/M010.PNG"
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/M010.JPG"
     },
     {
         "id": "P005",
         "name": "JAYA DOOR HANDLE ",
         "mrp": 3000,
         "rate": 450,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/P005.PNG"
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/P005.JPG"
     },
     {
         "id": "G009",
         "name": "Crystal Glass Handle",
         "mrp": 4000,
         "rate": 3200,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/G009.PNG"
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/G009.JPG"
     }
 ]
