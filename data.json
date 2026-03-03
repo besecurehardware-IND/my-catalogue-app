@@ -2,7 +2,7 @@
     {
         "id": "PULL HANDLE 001",
         "name": "D",
-        "mrp": "10000",
+        "mrp": "10000.0",
         "rate": "9999",
         "material": "BRASS",
         "size": "12\"",
@@ -10,12 +10,12 @@
         "unit": "Per Pcs",
         "description": "QWQQWQWQWQWQWQ",
         "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/ChatGPT Image Feb 15, 2026, 01_28_47 PM.png,ChatGPT Image Feb 15, 2026, 01_32_57 PM.png,ChatGPT Image Feb 15, 2026, 01_31_37 PM.png",
-        "last_updated": "2026-03-03 19:33:19"
+        "last_updated": "2026-03-03 19:39:06"
     },
     {
         "id": "PULL HANDLE 001",
         "name": "JAYA HANDLE ",
-        "mrp": "300000",
+        "mrp": "300000.0",
         "rate": "200000",
         "material": "BRASS",
         "size": "12\"",
@@ -23,6 +23,6 @@
         "unit": "Per Pcs",
         "description": "THIS IS A HARDWARE HANDLE ",
         "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/ChatGPT Image Feb 15, 2026, 01_32_57 PM.png,ChatGPT Image Feb 15, 2026, 01_31_37 PM.png,ChatGPT Image Feb 15, 2026, 01_28_47 PM.png",
-        "last_updated": "2026-03-03 19:33:19"
+        "last_updated": "2026-03-03 19:39:06"
     }
 ]
