@@ -7,7 +7,6 @@ import subprocess
 app = Flask(__name__)
 app.secret_key = "besecure_superfast_2026"
 
-# Folder Structure
 UPLOAD_FOLDER = 'static/images'
 EXCEL_FILE = 'catalog.xlsx'
 ADMIN_USER = "mohit"
@@ -15,7 +14,6 @@ ADMIN_PASS = "secure123"
 
 CATEGORIES = ["Mortise Handle", "Cabinet Handle", "Main Door Handle", "Pooja Mandir Handle", "Knobs", "Accessories"]
 
-# Folders check
 if not os.path.exists(UPLOAD_FOLDER): os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 def check_excel():
@@ -24,30 +22,25 @@ def check_excel():
         pd.DataFrame(columns=columns).to_excel(EXCEL_FILE, index=False)
 
 def background_sync():
-    """GitHub Push process in background"""
-    print("🚀 Background Sync Started...")
     subprocess.run(["python", "process_data.py"], shell=True)
     subprocess.run(["UpdateApp.bat"], shell=True)
-    print("✅ Background Sync Finished!")
 
 UI_STYLE = '''
 <style>
     :root { --primary: #2563eb; --success: #16a34a; --bg: #f1f5f9; }
-    body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; display: flex; overflow: hidden; }
-    .sidebar { width: 260px; background: #1e293b; color: white; height: 100vh; padding: 25px; box-sizing: border-box; }
-    .main-content { flex: 1; height: 100vh; overflow-y: auto; padding: 30px; box-sizing: border-box; }
-    .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; display: flex; }
+    .sidebar { width: 260px; background: #1e293b; color: white; height: 100vh; padding: 25px; position: fixed; }
+    .main-content { margin-left: 260px; flex: 1; padding: 30px; }
+    .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-    input, select, textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; }
-    .btn { padding: 12px; border-radius: 6px; border: none; cursor: pointer; font-weight: bold; transition: 0.2s; color: white; }
+    input, select, textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; }
+    .btn { padding: 12px; border-radius: 6px; border: none; cursor: pointer; font-weight: bold; color: white; }
     .btn-save { background: var(--primary); width: 100%; }
-    .btn-sync { background: var(--success); width: 100%; margin-top: 15px; font-size: 15px; }
-    .btn-delete { background: #ef4444; padding: 5px 10px; font-size: 12px; color:white; text-decoration:none; border-radius:4px; }
+    .btn-edit { background: #f59e0b; color: white; padding: 5px 10px; text-decoration: none; border-radius: 4px; font-size: 12px; margin-right: 5px; }
+    .btn-delete { background: #ef4444; color: white; padding: 5px 10px; text-decoration: none; border-radius: 4px; font-size: 12px; }
     table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-    th { background: #f8fafc; text-align: left; padding: 12px; border-bottom: 2px solid #e2e8f0; }
-    td { padding: 12px; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+    th, td { padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: left; font-size: 14px; }
     .img-thumb { width: 45px; height: 45px; object-fit: cover; border-radius: 6px; }
-    #syncMsg { font-size: 12px; text-align: center; margin-top: 8px; color: #94a3b8; }
 </style>
 '''
 
@@ -74,35 +67,35 @@ def dashboard():
     df = pd.read_excel(EXCEL_FILE)
     rows = ""
     for idx, item in df.iloc[::-1].iterrows():
-        img_str = str(item.get('image_name', ''))
-        img = img_str.split(',')[0] if img_str else ""
+        img = str(item.get('image_name', '')).split(',')[0]
+        # Edit function ko data pass karne ke liye logic
+        item_json = jsonify(item.to_dict()).get_data(as_text=True).replace("'", "\\'")
         rows += f'''<tr>
             <td><img src="/static/images/{img}" class="img-thumb" onerror="this.src='https://via.placeholder.com/45'"></td>
             <td>{item.get('id')}</td>
             <td>{item.get('name')}</td>
-            <td>{item.get('category')}</td>
             <td>₹{item.get('rate')}</td>
-            <td><a href="/delete/{idx}" class="btn-delete" onclick="return confirm('Pakka delete karein?')">X</a></td>
+            <td>
+                <button onclick='editItem({idx}, {item_json})' class="btn-edit">Edit</button>
+                <a href="/delete/{idx}" class="btn-delete" onclick="return confirm('Delete karein?')">X</a>
+            </td>
         </tr>'''
-
-    cat_options = "".join([f'<option value="{c}">{c}</option>' for c in CATEGORIES])
 
     return f'''{UI_STYLE}
     <div class="sidebar">
-        <h2>BeSecure Pro</h2><hr style="border:0.5px solid #334155">
-        <p>📦 Items: {len(df)}</p>
-        <button class="btn btn-sync" onclick="startSync()">🔄 LIVE SYNC TO APP</button>
-        <div id="syncMsg"></div>
-        <br><br><a href="/logout" style="color:#94a3b8; text-decoration:none;">Sign Out</a>
+        <h2>BeSecure Pro</h2><hr>
+        <p>📦 Total Items: {len(df)}</p>
+        <a href="/logout" style="color:#94a3b8; text-decoration:none;">Sign Out</a>
     </div>
     <div class="main-content">
         <div class="card">
-            <h3>⚡ Quick Add Product</h3>
+            <h3 id="formTitle">⚡ Add New Product</h3>
             <form id="productForm">
+                <input type="hidden" id="edit_idx" value="-1">
                 <div class="grid">
                     <input type="text" id="id" placeholder="Product ID" required>
                     <input type="text" id="name" placeholder="Product Name" required>
-                    <select id="cat">{cat_options}</select>
+                    <select id="cat">{"".join([f'<option value="{c}">{c}</option>' for c in CATEGORIES])}</select>
                     <input type="number" id="mrp" placeholder="MRP">
                     <input type="number" id="rate" placeholder="Dealer Rate" required>
                     <input type="text" id="mat" placeholder="Material">
@@ -112,24 +105,41 @@ def dashboard():
                 </div>
                 <textarea id="desc" placeholder="Product Description" style="margin-top:10px; height:60px;"></textarea>
                 <div style="margin-top:10px;">
-                    <label style="font-size:12px; color:#64748b;">Select Images (Multiple):</label>
-                    <input type="file" id="imgs" multiple required>
+                    <input type="file" id="imgs" multiple>
+                    <p style="font-size:10px; color:gray;">(Edit ke waqt images select na karein agar wahi purani rakhni hain)</p>
                 </div>
-                <button type="button" onclick="saveItem()" class="btn btn-save" style="margin-top:15px;">⚡ QUICK SAVE (INSTANT)</button>
+                <button type="button" id="submitBtn" onclick="saveItem()" class="btn btn-save" style="margin-top:15px;">⚡ SAVE PRODUCT</button>
             </form>
         </div>
         <div class="card">
             <h3>Recent Inventory</h3>
             <table>
-                <tr><th>Image</th><th>ID</th><th>Name</th><th>Category</th><th>Rate</th><th>Action</th></tr>
+                <tr><th>Image</th><th>ID</th><th>Name</th><th>Rate</th><th>Action</th></tr>
                 {rows}
             </table>
         </div>
     </div>
     <script>
+    function editItem(idx, data) {{
+        document.getElementById('formTitle').innerText = "📝 Edit Product: " + data.name;
+        document.getElementById('submitBtn').innerText = "🔄 UPDATE PRODUCT";
+        document.getElementById('edit_idx').value = idx;
+        document.getElementById('id').value = data.id;
+        document.getElementById('name').value = data.name;
+        document.getElementById('cat').value = data.category;
+        document.getElementById('mrp').value = data.mrp;
+        document.getElementById('rate').value = data.rate;
+        document.getElementById('mat').value = data.material;
+        document.getElementById('size').value = data.size;
+        document.getElementById('fin').value = data.finish;
+        document.getElementById('unit').value = data.unit;
+        document.getElementById('desc').value = data.description;
+        window.scrollTo(0,0);
+    }}
+
     function saveItem() {{
-        const btn = event.target; btn.innerText = "Saving..."; btn.disabled = true;
         const fd = new FormData();
+        fd.append('edit_idx', document.getElementById('edit_idx').value);
         fd.append('id', document.getElementById('id').value);
         fd.append('name', document.getElementById('name').value);
         fd.append('category', document.getElementById('cat').value);
@@ -140,17 +150,11 @@ def dashboard():
         fd.append('finish', document.getElementById('fin').value || "");
         fd.append('unit', document.getElementById('unit').value);
         fd.append('desc', document.getElementById('desc').value || "");
+        
         const files = document.getElementById('imgs').files;
         for (let i = 0; i < files.length; i++) {{ fd.append('images', files[i]); }}
 
         fetch('/upload', {{method:'POST', body:fd}}).then(() => location.reload());
-    }}
-    function startSync() {{
-        document.getElementById('syncMsg').innerText = "Syncing in background... ⏳";
-        fetch('/sync').then(() => {{
-            document.getElementById('syncMsg').innerText = "✅ Sync process started!";
-            setTimeout(() => document.getElementById('syncMsg').innerText = "", 5000);
-        }});
     }}
     </script>'''
 
@@ -158,38 +162,50 @@ def dashboard():
 def upload():
     check_excel()
     f = request.form
+    idx = int(f.get('edit_idx', -1))
+    df = pd.read_excel(EXCEL_FILE)
+    
+    # Image handling
     files = request.files.getlist('images')
     img_names = []
-    for file in files:
-        file.save(os.path.join(UPLOAD_FOLDER, file.filename))
-        img_names.append(file.filename)
-    
-    df = pd.read_excel(EXCEL_FILE)
-    new_item = {
+    if files and files[0].filename != '':
+        for file in files:
+            file.save(os.path.join(UPLOAD_FOLDER, file.filename))
+            img_names.append(file.filename)
+        new_img_str = ",".join(img_names)
+    else:
+        # Edit ke waqt agar naye image nahi chunni toh purani wali hi rahegi
+        new_img_str = df.at[idx, 'image_name'] if idx != -1 else ""
+
+    item_data = {
         'id': f['id'], 'name': f['name'], 'category': f['category'], 'mrp': f['mrp'], 
         'rate': f['rate'], 'material': f['material'], 'size': f['size'], 
         'finish': f['finish'], 'unit': f['unit'], 'description': f['desc'], 
-        'image_name': ",".join(img_names), 'status': 'Available'
+        'image_name': new_img_str, 'status': 'Available'
     }
-    df = pd.concat([df, pd.DataFrame([new_item])], ignore_index=True)
+
+    if idx != -1:
+        # Update existing row
+        for key, value in item_data.items():
+            df.at[idx, key] = value
+    else:
+        # Add new row
+        df = pd.concat([df, pd.DataFrame([item_data])], ignore_index=True)
+    
     df.to_excel(EXCEL_FILE, index=False)
     
-    # Auto-Sync Trigger
+    # Auto-Sync in background
     thread = threading.Thread(target=background_sync)
     thread.start()
     return "OK"
-
-@app.route('/sync')
-def sync():
-    thread = threading.Thread(target=background_sync)
-    thread.start()
-    return "Syncing"
 
 @app.route('/delete/<int:idx>')
 def delete_item(idx):
     df = pd.read_excel(EXCEL_FILE)
     df = df.drop(idx)
     df.to_excel(EXCEL_FILE, index=False)
+    thread = threading.Thread(target=background_sync)
+    thread.start()
     return redirect(url_for('dashboard'))
 
 @app.route('/logout')
