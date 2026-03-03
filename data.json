@@ -1,23 +1,23 @@
 [
-  {
-    "id": "1",
-    "name": "BRASS LOTUS DOOR HANDLE",
-    "mrp": "850",
-    "rate": "550",
-    "imageUrl": "https://raw.githubusercontent.com/user/repo/main/images/h1.jpg"
-  },
-  {
-    "id": "2",
-    "name": "Luxury MOP Handle M-05",
-    "mrp": "1500",
-    "rate": "950",
-    "imageUrl": "https://raw.githubusercontent.com/user/repo/main/images/m05.jpg"
-  },
-  {
-    "id": "3",
-    "name": "Zinc Door Handle Z-22",
-    "mrp": "600",
-    "rate": "420",
-    "imageUrl": "https://raw.githubusercontent.com/user/repo/main/images/z22.jpg"
-  }
+    {
+        "id": "H001",
+        "name": "LOTUS DOOR HANDLE",
+        "mrp": 80000,
+        "rate": 50000,
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/main/images/H001"
+    },
+    {
+        "id": "M010",
+        "name": "MOP Inlay Handle",
+        "mrp": 6000,
+        "rate": 5500,
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/main/images/M010"
+    },
+    {
+        "id": "G009",
+        "name": "Crystal Glass Handle",
+        "mrp": 4000,
+        "rate": 3200,
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/main/images/G009"
+    }
 ]
