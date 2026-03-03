@@ -1,58 +1,28 @@
 [
     {
-        "id": "H001",
-        "name": "LOTUS DOOR HANDLE",
-        "mrp": 80000,
-        "rate": 50000,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/H001.JPG"
-    },
-    {
-        "id": "H002",
-        "name": "SHINE DOOR HANDLE ",
-        "mrp": 8000,
-        "rate": 2800,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/H002.JPG"
-    },
-    {
-        "id": "M010",
-        "name": "PUSHPA DOOR HANDLE ",
-        "mrp": 6000,
-        "rate": 5500,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/M010.JPG"
-    },
-    {
-        "id": "P005",
-        "name": "JAYA DOOR HANDLE ",
-        "mrp": 3000,
-        "rate": 450,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/P005.JPG"
-    },
-    {
-        "id": "G009",
-        "name": "Crystal Glass Handle",
-        "mrp": 4000,
-        "rate": 3200,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/G009.JPG"
-    },
-    {
         "id": "PULL HANDLE 001",
         "name": "JAYA HANDLE ",
-        "mrp": 30000,
-        "rate": 25000,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/ChatGPT Image Feb 13, 2026, 04_30_19 PM.png"
+        "mrp": "30000",
+        "rate": "25000",
+        "material": "BRASS",
+        "size": "24\"",
+        "finish": "ANTQ",
+        "unit": "Per Set",
+        "description": "HII",
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/ChatGPT Image Feb 8, 2026, 10_25_51 PM.png",
+        "last_updated": "2026-03-03 18:00:22"
     },
     {
         "id": "DOOR HANDLE",
-        "name": "KISHORE ",
-        "mrp": 10000,
-        "rate": 9999,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/Gemini_Generated_Image_vhr0y2vhr0y2vhr0.png"
-    },
-    {
-        "id": "MANDLA ",
         "name": "LOTUSSS",
-        "mrp": 300000,
-        "rate": 200000,
-        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/ChatGPT Image Feb 15, 2026, 01_07_28 PM.png"
+        "mrp": "10000",
+        "rate": "25000",
+        "material": "BRASS",
+        "size": "34\"",
+        "finish": "ANTQ",
+        "unit": "Per Set",
+        "description": "GOOD",
+        "imageUrl": "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/Gemini_Generated_Image_524m5r524m5r524m.png",
+        "last_updated": "2026-03-03 18:00:22"
     }
 ]

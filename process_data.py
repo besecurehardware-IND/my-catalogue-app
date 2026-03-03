@@ -1,10 +1,9 @@
 import pandas as pd
 import json
-import os
+import datetime
 
 def process():
     df = pd.read_excel('catalog.xlsx')
-    # Sirf 'Available' items dikhane ke liye
     df = df[df['status'] == 'Available']
     
     products = []
@@ -20,11 +19,12 @@ def process():
             "unit": str(row.get('unit', '')),
             "description": str(row.get('description', '')),
             "imageUrl": f"https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/{row['image_name']}",
-            "status": str(row['status'])
+            "last_updated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         })
     
-    with open('data.json', 'width') as f:
+    with open('data.json', 'w') as f:
         json.dump(products, f, indent=4)
+    print("✅ data.json updated with timestamp!")
 
 if __name__ == "__main__":
     process()
