@@ -11,7 +11,7 @@ echo.
 echo 2. Uploading to Online Database (GitHub)...
 git add .
 git commit -m "Admin update: Rates updated"
-git push origin main
+git push origin master
 
 echo.
 echo ------------------------------------------

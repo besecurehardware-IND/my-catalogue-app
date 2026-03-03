@@ -8,7 +8,7 @@ def update_admin_panel():
         df = pd.read_excel('catalog.xlsx', engine='openpyxl')
         
         # 2. GitHub Raw link setup (Aapki repository ke hisab se)
-        base_url = "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/main/images/"
+        base_url = "https://raw.githubusercontent.com/besecurehardware-IND/my-catalogue-app/master/images/"
         
         # 3. Image URL banana
         df['imageUrl'] = base_url + df['image_name'].astype(str)
